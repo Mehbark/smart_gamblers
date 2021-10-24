@@ -7,9 +7,9 @@ use markov::Chain;
 mod gamble_f;
 
 fn main() {
-    let mut test = Gambler::new(10, vec!['+', '[', '.', '+', ']']);
+    let mut test = Gambler::new(100, "+[.+]");
     test.gamble();
-    println!("{:#?}", test);
+    println!("{}", test);
 }
 
 // TODO:

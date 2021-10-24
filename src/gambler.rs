@@ -1,7 +1,7 @@
+use crate::gamble_f::{GambleAction, GambleF};
 use rand::random; // 0.8.4
 use scottish_names::{first_name, surname, Sex}; // 0.2.2
 use titlecase::titlecase; // 1.1.0
-use crate::gamble_f::{GambleAction, GambleF};
 
 #[derive(Debug)]
 pub struct Gambler {
@@ -16,7 +16,7 @@ pub struct Gambler {
 }
 
 impl Gambler {
-    pub fn new(money: usize, code: Vec<char>) -> Self {
+    pub fn new(money: usize, code: &str) -> Self {
         Self {
             name: format!(
                 "{} {}",
@@ -60,11 +60,10 @@ impl Gambler {
                     self.flip();
                     let result = self.flip();
                     self.gamble_f.gamble_result(result);
-                },
+                }
                 Some(GambleAction::RequestBalance) => self.gamble_f.balance(self.money),
                 None => (),
             }
-            println!("{}", self.gamble_f.get_code_pointer());
         }
         self.gamble_f.code_string()
     }
